@@ -5,14 +5,14 @@
 
 class Matrix(object):
 
-    def __init__(self):
+	def __init__(self):
 
-    def loadFromJson(self,json):
+	def loadFromJson(self,json):
 
-    def toJson(self):
+	def toJson(self):
 
-    def getNodeIn(self, node):
+	def getNodeIn(self, node):
 
-    def getNodeOut(self, node):
+	def getNodeOut(self, node):
 
-    def set(self, in,out,pheromone,val_pos, val_neg):
+	def set(self, in,out,pheromone,val_pos, val_neg):
