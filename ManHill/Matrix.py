@@ -4,7 +4,7 @@
 # Matrix.py
 
 import json
-from Edge import Edge
+from ManHill.Edge import Edge
 
 class Matrix(object):
 
