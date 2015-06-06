@@ -8,6 +8,9 @@ class Edge(object):
 	def __init__(self,tab):
 		self._table=tab
 
+	def getTable(self):
+		return self._table
+
 	def setValue(self, pheromone, pos, neg):
 		if self._table["pheromones"].has_key(pheromone):
 			self._table["pheromones"][pheromone][0]=pos
@@ -23,12 +26,23 @@ class Edge(object):
 
 	def isOut(self, value):
 		return self.getNodeOut()==value
-			
+
 	def isSame(self, node_i, node_o):
 		if (self.getNodeOut()==node_o) and (self.getNodeIn()== node_i):
 			return True
 		else:
 			return False
+    def getPheromonePos(pheromone):
+        if self._table["pheromones"].has_key(pheromone):
+            return self._table["peromones"][pheromone][0]
+        else:
+            return 0
+
+    def getPheromoneNeg(pheromone):
+        if self._table["pheromones"].has_key(pheromone):
+            return self._table["peromones"][pheromone][1]
+        else:
+            return 0
 
 	def getNodeIn(self):
 		return self._table["node_in"]
