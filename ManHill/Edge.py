@@ -9,14 +9,14 @@ class Edge(object):
 		self._table=tab
 
 	def setValue(self, pheromone, pos, neg):
-		if _table["pheromones"].has_key(pheromone):
-			_table["pheromones"][pheromone][0]=pos
-			_table["pheromones"][pheromone][1]=neg
+		if self._table["pheromones"].has_key(pheromone):
+			self._table["pheromones"][pheromone][0]=pos
+			self._table["pheromones"][pheromone][1]=neg
 		else:
-			_table["pheromones"].update({pheromone: [pos,neg]})
+			self._table["pheromones"].update({pheromone: [pos,neg]})
 
 	def getAllPheromones(self):
-		return _table["pheromones"]
+		return self._table["pheromones"]
 
 	def isIn(self, value):
 		return self.getNodeIn()==value
@@ -31,7 +31,7 @@ class Edge(object):
 			return False
 
 	def getNodeIn(self):
-		return _table["node_in"]
+		return self._table["node_in"]
 
 	def getNodeOut(self):
-		return _table["node_out"]
+		return self._table["node_out"]
