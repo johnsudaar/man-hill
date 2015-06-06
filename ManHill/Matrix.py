@@ -1,37 +1,46 @@
 # Man Hill project
 # By Pierre Collet, Damien Teodori and Jonathan Hurter
 
-# Edge.py
+# Matrix.py
+
+import json
+from Edge import Edge
 
 class Matrix(object):
 
 	def __init__(self):
-        self._edges = []
+		self._edges = []
 
 	def loadFromJson(self,json_data):
-        for._edges = json.load(json_data)
+		all_edges = json.load(json_data)
+		for edge in all_edges:
+			self._edges.append(Edge(edge))
 
 	def toJson(self):
+		return
 
-	def getNodeTo(self, node):
-        node_to = []
-        for edge in self._edges:
-            if edge.isOut(node):
-                note_to.append(edge.getIn())
-        return node_to
+	def getEdgesTo(self, node):
+		edges_to = []
+		for edge in self._edges:
+			if edge.isOut(node):
+					 edges_to.append(edge)
+		return edges_to
 
-	def getNodeFrom(self, node):
-        node_from = []
-        for edge in self._edges:
-            if edge.isIn(node):
-                node_from.append(edge.getOut())
-        return node_from
+	def getEdgesFrom(self, node):
+		edges_from = []
+		for edge in self._edges:
+			if edge.isIn(node):
+					 edges_from.append(edge)
+		return edges_from
 
-	def set(self,in,out,pheromone,val_pos, val_neg):
-        for edge in self._edges:
-            if edge.isSame(in,out):
-                edge.setValue(pheromone,val_pos,val_neg)
-                return
+	def set(self, edge, pheromone,val_pos, val_neg):
+		self.set(edge.getIn(), edge.getOut(), pheromone, val_pos, val_neg)
 
-        # Will only go to this line if the they is no edge found
-        self._edges.append(Edge({'node_in':in,"node_out":out,"pheromones":{pheromone:[val_pos,val_neg]}}))
+	def set(self,node_in,node_out,pheromone,val_pos, val_neg):
+		for edge in self._edges:
+			if edge.isSame(node_in,node_out):
+				edge.setValue(pheromone,val_pos,val_neg)
+				return
+
+		# Will only go to this line if the they is no edge found
+		self._edges.append(Edge({'node_in':node_in,"node_out":node_out,"pheromones":{pheromone:[val_pos,val_neg]}}))
