@@ -33,7 +33,7 @@ class Matrix(object):
 					 edges_from.append(edge)
 		return edges_from
 
-	def set(self, edge, pheromone,val_pos, val_neg):
+	def set_edge(self, edge, pheromone,val_pos, val_neg):
 		self.set(edge.getIn(), edge.getOut(), pheromone, val_pos, val_neg)
 
 	def set(self,node_in,node_out,pheromone,val_pos, val_neg):
