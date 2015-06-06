@@ -11,7 +11,7 @@ class Matrix(object):
 		self._edges = []
 		for edge in edges:
 			self._edges.append(Edge(edge))
-	
+
 	def getTable(self):
 		table = []
 		for edge in self._edges
